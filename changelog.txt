@@ -1,0 +1,159 @@
+*** Wp e-Commerce Quick View Ultimate Changelog ***
+
+= 1.2.0 - 2017/06/15 =
+* Tweak - Tested for compatibility with WordPress major version 4.8.0
+* Tweak - Tested for compatibility with WPEC major version 3.12.2
+* Tweak - WordPress Translation activation. Add text domain declaration in file header
+* Tweak - Change global $$variable to global ${$variable} for compatibility with PHP 7.0
+* Tweak - Update a3 Revolution to a3rev Software on plugins description
+* Tweak - Added Settings link to plugins description on plugins menu
+* Tweak - Updated plugins Description on wordpress.org with End of Development and Maintenance notice
+* Tweak - Removed tracking code from plugin
+* Tweak - Removed auto upgrading code from plugin
+* Tweak - Remove confirm license key form at first activate the plugin
+* Blog Notice - Read full details about the future of this plugin here https://a3rev.com/end-of-wp-e-commerce-development
+
+= 1.1.8 - 2016/04/22 =
+* Tweak - Tested for full compatibility with WP-eCommerce Version 3.11.2
+* Tweak - Tested for full compatibility with WordPress major version 4.5.0
+
+= 1.1.7 - 2015/09/08 =
+* Tweak - Tested for full compatibility with WP-eCommerce Version 3.10.1
+* Fix - Delete check new version transient when transient_timeout is deleted by WordPress 4.3 get_transients function so call to a3api for new version still works.
+
+= 1.1.6 - 2015/08/25 =
+* Tweak - Tested for full compatibility with WordPress major version 4.3.0
+* Tweak - Tested for full compatibility with WP-eCommerce major version 3.9.5
+* Tweak - include new CSSMin lib from https://github.com/tubalmartin/YUI-CSS-compressor-PHP-port into plugin framework instead of old CSSMin lib from http://code.google.com/p/cssmin/ , to avoid conflict with plugins or themes that have CSSMin lib
+* Tweak - Make __construct() function for 'Compile_Less_Sass' class instead of using a method with the same name as the class for compatibility on WP 4.3 and is deprecated on PHP4
+* Tweak - Change class name from 'lessc' to 'a3_lessc' so that it does not conflict with plugins or themes that have another Lessc lib
+* Tweak - Added new options into Settings -> Permalinks page on Dashboard
+* Fix - Check 'request_filesystem_credentials' function, if it does not exists then require the core php lib file from WP where it is defined
+* Fix - Make __construct() function for 'WPEC_Quick_View_Ultimate' class instead of using a method with the same name as the class for compatibility on WP 4.3 and is deprecated on PHP4
+* Fix - Make __construct() function for 'WPEC_Quick_View_Ultimate_Style' class instead of using a method with the same name as the class for compatibility on WP 4.3 and is deprecated on PHP4
+* Fix - Change timeout of call to a3API for updates from 45 seconds to 8 seconds to resolve the server PHP timeout 30 seconds default. Server timeout before call finish was causing the 24 hour cron call not to be set and causing the dashboard to load slowly if a3API is not reachable.
+* Fix - Set 24 hours cron before call to a3API so that if have fail to connection then it will call in 24 hours on Cron instead of continue call each time Dashboard is loaded
+* Fix - validate the response from called to resolve PHP notice 'Undefined offset: 1'
+
+= 1.1.5 - 2015/06/29 =
+* Tweak - Automatic delete the house keeping option of Lite version when upgrading from Lite to Pro version. Prevents data from being deleted on upgrade if the Lite Version Clean Up On Deletion option is was left switched ON before deactivating it to install the Pro version.
+* Tweak - Tested for full compatibility with WP e-Commerce version 3.9.4
+* Fix - Added fallback cron job schedule to fix License Key deactivation bug that occurs when call to server returns null for server name when checking key status for auto Maintenance and Feature upgrades
+
+= 1.1.4 - 2015/06/03 =
+* Tweak - Tested for full compatibility with WordPress Version 4.2.2
+* Tweak - Security Hardening. Removed all php file_put_contents functions in the plugin framework and replace with the WP_Filesystem API
+* Tweak - Security Hardening. Removed all php file_get_contents functions in the plugin framework and replace with the WP_Filesystem API
+* Fix - Update dynamic stylesheet url in uploads folder to the format //domain.com/ so it's always is correct when loaded as http or https
+
+= 1.1.3 - 2015/05/06 =
+* Tweak - Tested for full compatibility with WordPress Version 4.2.1
+* Fix - Removed check_ajax_referer() call on frontend for compatibility with PHP caching plugins. Was returning -1 to js success call-back.
+
+= 1.1.2 - 2015/04/24 =
+* Tweak - Tested and Tweaked for full compatibility with WordPress Version 4.2.0
+* Tweak - Tested and Tweaked for full compatibility with WP e-Commerce Version 3.9.3
+* Tweak - Changed WP_CONTENT_DIR to WP_PLUGIN_DIR. When admin sets a custom WordPress file structure then it can get the correct path of plugin
+* Tweak - Update style of plugin framework. Removed the [data-icon] selector to prevent conflict with other plugins that have font awesome icons
+* Fix - Show the new plugin version on the Core Update page. Feature stopped working with WordPress version 4.1
+* Fix - Undefined property: stdClass::$ID bug. Check if feature image is not set then don't include in gallery.
+* Fix - Sass compile path not saving on windows xampp
+
+= 1.1.1 - 2014/11/13 =
+* Fix - a3rev License code now recognises domain with and without the www. We believe that this will solve Licenses auto deactivating on some sites.
+
+= 1.1.0 - 2014/09/16 =
+* Feature - Converted all front end CSS #dynamic {stylesheets} to Sass #dynamic {stylesheets} for faster loading.
+* Feature - Convert all back end CSS to Sass.
+* Tweak - Remove dynamic inline style for quick view button is loaded from footer to reduce the query to database
+* Tweak - Added customized button style file for Sass
+* Fix - Custom popup template PHP notice in DEBUG mode, changed wpsc_this_page_url(); to get_permalink( wpsc_the_product_id() ); so that wpsc_this_page_url(() have $wpsc_query global variable
+
+= 1.0.5.3 - 2014/09/09 =
+* Tweak - Updated google font face in plugin framework.
+* Tweak - Tested 100% compatible with WP e-Commerce 3.8.14.3
+* Tweak - Tested 100% compatible with WordPress Version 4.0
+
+= 1.0.5.2 - 2014/06/23 =
+* Tweak - Updated chosen js script to latest version 1.0.1 on the a3rev Plugin Framework
+* Tweak - Added support for placeholder feature for input, email , password , text area types
+* Tweak - Convert Lifetime License to single site purchase with add sites at discount feature.
+
+= 1.0.5.1 - 2014/05/23 =
+* Tweak - Changed add_filter( 'gettext', array( $this, 'change_button_text' ), null, 2 ); to add_filter( 'gettext', array( $this, 'change_button_text' ), null, 3 );
+* Tweak - Update change_button_text() function from ( $original == 'Insert into Post' ) to ( is_admin() && $original === 'Insert into Post' )
+* Fix - Code tweaks to fix a3 Plugins Framework conflict with WP e-Commerce tax rates.
+
+= 1.0.5 - 2014/05/23 =
+* Feature - Added 3rd Pop-up Content Option Type - Custom Template.
+* Feature - Dynamic Product Image Gallery in Custom template.
+* Feature - View Next> and <Previous products in Custom Template pop up.
+* Feature - Next> <Previous products feature works for all WP e-Commerce Product Page and category Sort by types:
+* Feature - Next> <Previous product feature works on Shop page and all Product Category pages.
+* Feature - Custom Template - set wide of Image Gallery as a percentage of the pop-up wide.
+* Feature - Custom Template - Set Image Gallery to show Left or right in the pop-up
+* Feature - Custom Template - Set behaviour of the Next> and <Previous scroll controls
+* Feature - Custom Template - Upload custom Next> and <Previous scroll Control icons.
+* Feature - Custom Template - Dynamic Gallery transition effects and transition timing settings.
+* Feature - Custom Template - Dynamic Gallery Style settings including caption text, nav bar and Lazy-load scroll bar.
+* Feature - Custom Template - Dynamic gallery thumbnail settings.
+* Feature - Custom Template - Product Title style, layout and container settings
+* Feature - Custom Template - Show WP e-Commerce Product rating stars with ON | OFF, alignment and padding settings.
+* Feature - Custom Template - Added option to show text from Short description or excerpt from Product description.
+* Feature - Custom Template - Set the number of product description characters to show if that option is selected.
+* Feature - Custom Template - Product Description ON | OFF, font type and style, alignment and padding settings.
+* Feature - Custom Template - Product Meta ON | OFF, font type and style, alignment and padding settings.
+* Feature - Custom Template - Product Price ON | OFF, Price font type and style, alignment and padding settings.
+* Feature - Custom Template - Add to Cart Button ON | OFF, Button or Hyperlink text, success icon, and full button creator settings.
+* Feature - Custom Template in pop-up is fully mobile responsive.
+* Feature - Added custom fixed max Height and fixed max width settings for pop-up tools.
+* Tweak - Moved the plugin from a sub menu item on the Products menu to its own WordPress Admin menu WPEC Quick View.
+* Tweak - Added all Custom Template Menus as a Sub menu of WPEC Quick View
+
+= 1.0.4 - 2014/05/12 =
+* Tweak - Removed dynamic pop-up wide setting and replaced with static pop-up max wide.
+* Tweak - Pop-up tools wide under 520px shows 100% wide of the screen for mobiles in portrait or landscape
+* Tweak - Tested for full compatibility with WP e-Commerce Version 3.8.14.1
+* Tweak - Tested for compatibility with WordPress version 3.9.1
+* Tweak - Updated Framework help text font for consistency.
+* Tweak - Added remove_all_filters('mce_external_plugins'); before call to wp_editor to remove extension scripts from other plugins.
+* Tweak - Full WP_DEBUG ran, all uncaught exceptions, errors, warnings, notices and php strict standard notices fixed.
+* Tweak - Added PHP Public Static to functions in Class. Done so that Public Static warnings don't show in DE_BUG mode.
+* Tweak - Launched Pro Version Trail License and Free Trail evaluation.
+* Tweak - Add sites to Lifetime Licenses.
+* Fix - Pop-up not opening in WPEC 3.8.14. Added wp_localize_script( 'wp-e-commerce', 'wpsc_vars', wpsc_javascript_localizations() );
+* Fix - Distorted pop-up display in mobile phone portrait view with new pop-up static max wide.
+
+= 1.0.3 - 2013/12/20 =
+* Feature - a3rev Plugin Framework admin interface upgraded to 100% Compatibility with WordPress v3.8.0 with backward compatibility.
+* Feature - a3rev framework 100% mobile and tablet responsive, portrait and landscape viewing.
+* Feature - Button style - Rounded - Can now set a rounded value for each corner of the button to create many different button styles.
+* Tweak - Upgraded dashboard switches and sliders to Vector based display that shows when WordPress version 3.8.0 is activated.
+* Tweak - Upgraded all plugin .jpg icons and images to Vector based display for full compatibility with new WordPress version.
+* Tweak - New border display types, Grove, Ridge, Inset, Outset
+* Tweak - Tested 100% compatible with WP 3.8.0
+* Fix - Update make_compatibility function with  isset( $args->slug ) and isset( $args['body']['request'] ) so that our plugin can work together with other developers plugin (eg Backupbuddy) that adds filter on the WordPress plugins_api (bad thing to do)
+* Fix - Upgraded array_textareas type for Padding, Margin settings on the a3rev plugin framework
+* Fix - $args->slug depreciated in WordPress 3.7, replace with $request = unserialize( $args['body']['request'] ); $request->slug
+* Fix - Google fonts preview changes conflict.
+
+= 1.0.2 - 2013/10/10 =
+* Feature - Admin panel intuitive app interface feature. Show slider to set corner radius when select Round, hide when select Square on Border Corner Style Switch.
+* Fix - Intuitive Radio Switch settings not saving. Input with disabled attribute could not parse when form is submitted, replace disabled with custom attribute: checkbox-disabled
+* Fix - App interface Radio switches not working properly on Android platform, replace removeProp() with removeAttr() function script
+
+= 1.0.1 - 2013/10/03 =
+* Feature - Upgraded the plugin to the newly developed a3rev admin panel app interface.
+* Feature - New admin UI features check boxes replaced by switches, some dropdowns replaced by sliders.
+* Feature - Replaced colour picker with new WordPress 3.6.0 colour picker.
+* Feature - Added choice of 350 Google fonts to the existing 17 websafe fonts in all new single row font editor.
+* Feature - New Border / Button shadow features. Create shadow external or internal, set wide of shadow.
+* Feature - New on page instant previews for Fonts editor, create border and shadow style.
+* Feature - Added intuitive triggers for some settings. When selected corresponding feature settings appear.
+* Tweak - Added set pop up wide from 50% to 100% by increments of + or - 1% using new slider interface
+* Tweak - Moved admin from Store settings tab onto the WP e-Commerce Products menu.
+* Fix - PayPal as a security feature blocks POST request from checkout in iframe pop-up. Added feature that when /checkout URL is requested in pop-up it auto closes and redirects user to the sites checkout.
+* Fix - Plugins admin script and style not loading in Firefox with SSL on admin. Stripped http// and https// protocols so browser will use the protocol that the page was loaded with.
+
+= 1.0.0 - 2013/08/05 =
+* First working release
